@@ -12,8 +12,6 @@ const createCheck = async(req, res, next)=>{
     // let checkTime = closedDate.getTime() - openedDate.getTime()
 
     // checkTime = checkTime*1000*60
-    console.log("CRWATEFCHECK IS RUNNING")
-    console.log(tableId)
 
     let createdCheck = new Check({
         user,
@@ -58,16 +56,12 @@ const createCheck = async(req, res, next)=>{
 
 const getCheck=async(req,res, next)=>{
     const checkId = req.params.cId
-    // console.log("GETCCHECK RUNNING IN BACKEND")
     let check
     try{
         check = await Check.findById(checkId)
     }catch(err){
         console.log(err)
     }
-
-    console.log("GET CHECK CHECK")
-    console.log(check)
 
     res.json(check)
 
@@ -78,8 +72,6 @@ const updateCheck = async(req, res, next)=>{
     const newCheckItems = req.body.checkItems
     const checkId = req.params.cId
 
-    console.log("CHECK ITEMS INPUT IN UPDATE CHECK")
-    console.log(newCheckItems)
     let check
 
     try{
@@ -88,8 +80,6 @@ const updateCheck = async(req, res, next)=>{
         console.log(err)
     }
 
-    console.log("CHECK FOUND IN UPDATE CHECK vvvvvvvvvv")
-    console.log(check)
 
     check.checkItems = newCheckItems
 
@@ -103,10 +93,8 @@ const updateCheck = async(req, res, next)=>{
 
 const deleteCheck = async(req, res, next)=>{
     const checkId = req.params.cId
-    // const tableId = req.body.tableId
 
     let check
-    // let table
 
     try{
         check = await Check.findById(checkId)

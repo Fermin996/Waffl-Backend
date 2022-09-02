@@ -3,7 +3,6 @@ const Table = require('../models/table')
 const createTable = async(req,res,next)=>{
 
     const {user, table, openedTime, shiftId} = req.body
-    console.log(table)
     let openedDate =  new Date(openedTime)
     let createdTable = new Table({
         user,
